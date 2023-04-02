@@ -11,35 +11,24 @@ class Solution(object):
         :type val: int
         :rtype: ListNode
         """
-        # Create a dummy node to point to the head of the list
+
         dummy = ListNode(0)
         dummy.next = head
         
-        # Initialize two pointers, one to traverse the list
-        # and the other to keep track of the previous node
-        prev = dummy
-        current = head
-        
-        # Traverse the list
-        while current:
-            # If the current node's value matches the given value,
-            # delete the current node by skipping it
-            if current.val == val:
-                prev.next = current.next
+        current = dummy
+        while current.next != None:
+            if current.next.val == val:
+                current.next = current.next.next
             else:
-                prev = current
-            
-            # Move to the next node
-            current = current.next
-        
-        # Return the head of the updated list
+                current = current.next
+                
         return dummy.next
 
 # Create a linked list: 1 -> 2 -> 6 -> 3 -> 4 -> 5 -> 6
 head = ListNode(1)
 head.next = ListNode(2)
 head.next.next = ListNode(6)
-head.next.next.next = ListNode(3)
+head.next.next.next = ListNode(6)
 head.next.next.next.next = ListNode(4)
 head.next.next.next.next.next = ListNode(5)
 head.next.next.next.next.next.next = ListNode(6)
